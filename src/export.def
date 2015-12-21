@@ -1,0 +1,17 @@
+LIBRARY "IdaHaskell.plw"
+EXPORTS
+hs_init
+hs_exit
+h_ida_init
+h_ida_term
+h_ida_run
+h_cli_execute_line
+deRefStablePtr
+PLUGIN
+addDLL
+get_func_items
+get_intseq_items
+qflow_chart_create
+qflow_chart_release
+qflow_chart_size
+qflow_chart_get_block
