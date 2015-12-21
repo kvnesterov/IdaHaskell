@@ -1,7 +1,9 @@
 # IdaHaskell
 
 Allows to execute haskell code in Ida Pro.
+
 ![alt text](https://raw.githubusercontent.com/kvnesterov/IdaHaskell/master/screenshot.png "Example")
+
 
 ### Requirements
 <<<<<<< HEAD
