@@ -29,6 +29,8 @@ localBuildHook desc buildInfo hooks flags = do
       ghc = runProgram normal ghcProgram'
       gccProgram' = fromJust (lookupProgram gccProgram progs)
       gcc = runProgram normal gccProgram'
+      hsc2hsProgram' = fromJust (lookupProgram hsc2hsProgram progs)
+      hsc2hs = runProgram normal hsc2hsProgram'
       includeDirs' = includeDirs $ libBuildInfo $ fromJust $ library desc
       libInfo =  libBuildInfo $ fromJust $ library desc
       ccOptions' = map ("-optc" ++) $ ccOptions libInfo
@@ -45,6 +47,13 @@ localBuildHook desc buildInfo hooks flags = do
          srcDir </> "Ida.hs", srcDir </> "Cli.hs", "-lstdc++",
          extraLibDirs' </> "ida.a", srcDir </> "export.def"] ++
          cSources' ++ ccOptions'
+
+  logC "Preprocessing UserApi"
+  hsc2hs $ ["-c", "g++", "-I" ++ head includeDirs', srcDir </> "UserApi.hsc"]
+            ++ ccOptions libInfo
+
+  logC "Static check of UserApi"
+  ghc $ ["-fno-code", srcDir </> "UserApi.hs"]
 
   return ()
 

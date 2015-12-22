@@ -1,3 +1,4 @@
+{-# OPTIONS_GHC -optc-DWIN32 #-}
 {-# OPTIONS_GHC -optc-D__NT__ #-}
 {-# OPTIONS_GHC -optc-D__IDP__ #-}
 {-# LINE 1 "src\UserApi.hsc" #-}
